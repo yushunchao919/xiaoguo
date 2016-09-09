@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gb2312" />
+<title>文本框高度</title>
+<style type="text/css">
+input:focus{ border:1px solid #ff0; background:#eee; outline:none;}
+span{border:1px solid #000;}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+ $(function(){
+ var $area=$("#area");
+  $(".bigger").click(function(){
+    if($area.height()<500){$area.animate({height:"+=50"},400)};
+  });
+	$(".smaller").click(function(){
+	  if($area.height()>100){$area.animate({height:"-=50"},400)};
+	});		
+})
+</script>
+</head>
+<body>
+   <form action="#" method="post">
+      <div class="box">
+		<div class="btn">
+			<span class="bigger" >放大</span>
+			<span class="smaller" >缩小</span>
+		</div>
+		<div>
+			<textarea rows="8" cols="50" id="area"> 
+			开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞
+			</textarea>
+		</div>
+	</div>
+
+   </form>
+</body>
+</html>

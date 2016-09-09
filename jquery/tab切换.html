@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body,ul{margin:0;padding:0;}
+      body{font-size:12px;line-height:2.4;}
+      ul{list-style:none;}
+      a{text-decoration:none;color:#000;}
+      .nav{overflow:hidden;border-top:1px solid #C7DDF5;}
+      .nav li{float:left;overflow:hidden;}
+      .nav a{float:left;padding:5px 15px;color:#1672BB;font-weight:bold;}
+			.nav .active a{border-top:2px solid #4DABF1;padding:3px 15px 5px;}
+			.a a{color:#1672BB;font-weight:bold;}
+      .list{display:none;}
+      .show{display:block;}
+      .wrapper{width:358px;margin:100px auto 0;}
+    </style>
+  <script src="jquery.js"></script>
+  <script>
+    $(function(){
+      $(".nav li:eq(1)").addClass("active");
+			$(".list li").first().addClass("a");
+      $(".nav li").mouseover(function(){
+        $(this).addClass("active").siblings(".nav li").removeClass("active");
+				var sum=$(this).index();
+				$(".list").eq(sum).stop(true).fadeIn().siblings(".list").hide();
+      });
+    });
+  </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <ul class="nav">
+        <li><a href="#">要闻</a></li>
+        <li><a href="#">北京新闻</a></li>
+      </ul>
+      <ul class="list show">
+        <li><a href="#">挂靠集体户口有望免费&nbsp;北京户口代办机构收费3万</a></li>
+        <li><a href="#">动批市场商户外迁天津&nbsp;可获落户等优惠政策</a></li>
+        <li><a href="#">卷烟批发价将统一提高6%&nbsp;卷烟零售价提高10%</a></li>
+        <li><a href="#">8名外国人吸毒&nbsp;折了“朝阳群众”举报&nbsp;牛了</a></li>
+        <li><a href="#">北京周六最高气温16℃&nbsp;周日白天最高温13℃</a></li>
+        <li><a href="#">白庙公交失火系人为&nbsp;消防局发布逃生办法</a></li>
+      </ul>
+      <ul class="list">
+        <li><a href="#">挂靠集体户口有望免费&nbsp;北京户口代办机构收费3万</a></li>
+        <li><a href="#">动批市场商户外迁天津&nbsp;可获落户等优惠政策</a></li>
+        <li><a href="#">卷烟批发价将统一提高6%&nbsp;卷烟零售价提高10%</a></li>
+        <li><a href="#">8名外国人吸毒&nbsp;折了“朝阳群众”举报&nbsp;牛了</a></li>
+        <li><a href="#">北京周六最高气温16℃&nbsp;周日白天最高温13℃</a></li>
+        <li><a href="#">白庙公交失火系人为&nbsp;消防局发布逃生办法</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

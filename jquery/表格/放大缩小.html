@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>表格</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+  
+$(function(){
+		$("span").click(function(){
+			var thisEle = $("#para").css("font-size");
+			var FontSize = parseFloat(thisEle , 10);
+			var unit = thisEle.slice(-2); 
+			var cName = $(this).attr("class");
+			if(cName == "bigger"){
+				   if( FontSize <= 22 ){
+						FontSize += 2;
+					}
+			}else if(cName == "smaller"){
+				   if( FontSize >= 12  ){
+						FontSize -= 2;
+					}
+			}
+			$("#para").css("font-size",  FontSize + unit);
+		});
+	});
+</script>
+</head>
+
+<body>
+ 
+ 
+
+<div class="box">
+	<div class="btn">
+		<span class="bigger" >放大</span>
+		<span class="smaller" >缩小</span>
+	</div>
+	<div>
+		<p id="para">
+		开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞开啊束带结发斯科拉法 卡萨老师还考试分为电视剧看出恢复快问问飞
+		</p>
+	</div>
+</div>
+
+
+</body>
+</html>

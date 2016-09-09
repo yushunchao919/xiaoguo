@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script src="jquery.js"></script>
+    <script src="template.js"></script>
+</head>
+<body>
+	<script id="art_title" type="text/html">		
+		<ul>
+			{{each data as value i}}
+			<li>{{value.name}}</li>
+			{{/each}}
+		</ul>
+		<table>
+			<tr>	
+				<td>
+					<a href="javascript:;" class="first" data-type="first" data-spage="1">首页</a>
+				</td>
+				<td>
+					<a href="javascript:;" class="prev" data-type="prev" data-spage="1">上页</a>
+				</td>
+				<td>
+					<a href="javascript:;" class="nex" data-type="next" data-spage="2">下一页</a>
+				</td>
+				<td>
+					<a href="javascript:;" class="last" data-type="last" data-spage="{{totlenum}}">尾页</a>
+				</td>
+		</tr>
+	  </table>
+	</script>
+		<script id="art_title2" type="text/html">		
+			{{each data as value i}}
+			<li>{{value.name}}</li>
+			{{/each}}
+	</script>
+<script>
+    $(function () {	
+		$.ajax({
+			type: 'GET',
+			url: 'index.php',
+			dataType:'json',
+			success: function(data){
+				var html = template('art_title', data);
+				$('body').append(html);
+			}
+		});
+		$(document).on('click',"a",function(){
+			 var _this = $(this);
+			 var spage = _this.attr('data-spage')*1;
+			 var lastpage = $('.last').attr('data-spage')*1;
+			 var type = _this.attr('data-type');
+			if(type=='next'&&spage<lastpage){_this.attr('data-spage',spage+1),$('.prev').attr('data-spage',spage)}
+			if(type=='prev'&&spage>1){_this.attr('data-spage',spage-1),$('.nex').attr('data-spage',spage)}		
+			if(type=='first'){$('.prev').attr('data-spage',1),$('.nex').attr('data-spage',2)}		
+			if(type=='last'){$('.prev').attr('data-spage',spage-1),$('.nex').attr('data-spage',spage)}	
+			
+			
+			
+		$.ajax({
+			type: 'GET',
+			url: 'index.php',
+			data:{page:spage},
+			dataType:'json',
+			success: function(data){
+				var html = template('art_title2', data);
+				$('ul').html('').append(html);
+			}
+		});
+			
+		})		
+	})
+</script>
+</body>
+</html>

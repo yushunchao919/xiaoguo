@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>		
+			<ul>
+				<li id="ppt">你好</li>
+			</ul>
+			 
+		<script type="text/javascript" src="jquery-2.2.3.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#ppt").click(function(){
+					var id = $('#id').val();
+				
+					$.ajax({		
+						type:"get",
+						url:"nan.php",
+						data:{user_id:id},
+						success: function(data){
+							alert(data);
+						}
+					})
+ 
+			  });
+			});
+		</script>
+		<input type="hidden" id="id" value="6">
+	</body>
+</html>

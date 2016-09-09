@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>伸缩导航</title>
+
+<script src="jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+       
+        $("dl:not(:first) dd").hide();
+        
+        $("dt").click(function(){
+                $own = $(this).siblings("dd");
+                if($own.is(':visible')){
+                        $(this).find('img').attr('src','images/down.gif');
+                }else{
+                        $(this).find('img').attr('src','images/up.gif');
+                        }
+                $(this).nextAll().slideToggle("fast");        
+        });
+});
+</script>
+<style type="text/css">
+a img{ border:0;}
+dl,dt,dd{margin:0; padding:0;}
+#menu{ width:148px; font-size:12px; list-style:none;}
+#menu dl{ margin-bottom:0px;}
+#menu dt{ text-align:center; height:23px; padding-top:3px;}
+#menu a{ color:#660; text-decoration:none}
+#menu a:hover{ text-decoration:underline}
+#menu dd{padding-left:80px; text-align:left; line-height:200%; background:url(images/arr4.gif) no-repeat 65px;}
+</style>
+</head>
+ <body>
+  <div id="menu">
+    <dl>
+       <dt><a href="#"><img src="images/up.gif">衬衣</a></dt>
+       <dd><a href="#">长袖</a></dd>
+       <dd><a href="#">短袖</a></dd>
+    </dl>
+    <dl>
+      <dt><a href="#"><img src="images/down.gif">裤子</a></dt>
+      <dd><a href="#">运动裤</a></dd>
+      <dd><a href="#">牛仔裤</a></dd>
+    </dl>
+    <dl>
+      <dt><a href="#"><img src="images/down.gif">外套</a></dt>
+      <dd><a href="#">春季</a></dd>
+      <dd><a href="#">秋季</a></dd>
+    </dl>
+  </div>
+ </body>
+</html>

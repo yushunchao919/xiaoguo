@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>伸缩导航</title>
+
+<script src="jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+        //除了第一个子菜单外，其余子菜单隐藏
+        $("dl:not(:first) dd").hide();
+		
+
+        //点击事件
+        $("dt").click(function(){
+                
+                $own = $(this).siblings("dd");
+                //判断当前元素是否可见更换图片  ：visible查找可见元素
+                if($own.is(':visible')){
+                        //find：搜索指定元素
+                        $(this).find('img').attr('src','images/menu-ex.png');
+                }else{
+                        $(this).find('img').attr('src','images/menuj.png');
+                        }
+                        //子菜单伸缩效果
+                $(this).nextAll().slideToggle("fast");        
+        });
+});
+</script>
+<style type="text/css">
+a img{ border:0; margin-left:5px;}
+dl,dt,dd{margin:0; padding:0;}
+#menu{ width:148px; font-size:12px; list-style:none; border:3px solid #690}
+#menu dl{ margin-bottom:0px;}
+#menu dt{ text-align:center; height:23px; padding-top:3px; background:url(images/menubg.gif) no-repeat;}
+#menu a{ color:#660; text-decoration:none}
+#menu a:hover{ text-decoration:underline}
+#menu dd{padding-left:30px; text-align:left; line-height:200%; background:url(images/arr4.gif) no-repeat 15px;}
+</style>
+</head>
+ <body>
+  <div id="menu">
+    <dl>
+       <dt><a href="#">文章管理<img src="images/menuj.png"></a></dt>
+       <dd><a href="#">文章类型管理</a></dd>
+       <dd><a href="#">文章管理</a></dd>
+       
+    </dl>
+    <dl>
+      <dt><a href="#">产品管理<img src="images/menu-ex.png"></a></dt>
+      <dd><a href="#">产品类型管理</a></dd>
+      <dd><a href="#">产品管理</a></dd>
+      <dd><a href="#">文章管理</a></dd>
+       <dd><a href="#">文章管理</a></dd>
+    </dl>
+    <dl>
+      <dt><a href="#">用户管理<img src="images/menu-ex.png"></a></dt>
+      <dd><a href="#">用户类型管理</a></dd>
+      <dd><a href="#">用户管理</a></dd>
+      <dd><a href="#">文章管理</a></dd>
+       <dd><a href="#">文章管理</a></dd>
+    </dl>
+  </div>
+ </body>
+</html>

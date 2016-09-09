@@ -1,0 +1,72 @@
+<!Doctype html>
+<html>
+ <head>
+ <meta charset="utf-8">
+<style type="text/css">
+    li{list-style:none;width:200px;float:left;}
+	li a{ text-decoration:none;}
+	ul{width:600px;margin:0 auto;}
+	.sonBtn{clear:both;padding:35px 0; }
+	#lst{overflow:hidden}
+	.btn{ display:block;width:200px;height:25px;margin:0 auto; border:1px solid #ccc; text-align:center; text-decoration:none; line-height:1.8;background:url(images/down.gif) no-repeat 45px center;}
+	.promoted{color:red;}
+</style>
+  
+<script src="jQuery.js"></script>  
+     <script>
+
+     $(function(){
+		 var $sou=$("#lst li:gt(5):not(:last)");//给显示隐藏的内容赋值
+	     $sou.hide();//隐藏
+		   $(".btn").click(function(){
+									
+		     if($sou.is(":visible")){
+			    $sou.hide();//隐藏
+				$(this).html("显示全部")//显示全部
+				       .css("background-image","url(images/down.gif)")//更改图片为down
+					 $("ul a").removeClass("promoted")
+					   //删除高亮
+			 }			 
+			 else{
+				 $sou.show();//显示
+				$(this).html("精品显示")//精品显示
+				       .css("background-image","url(images/up.gif)")//更改图片为up
+					     $('ul a').filter(":contains('三星'),:contains('松下'),:contains('奥林巴斯')")
+					        //filter过滤  找到内容
+					   .addClass("promoted")//添加高亮
+					 
+				 }
+		      return false;//阻止浏览器跳转
+		  
+		   });
+           
+		 })
+    
+
+	 </script>
+ 
+ </head>
+
+ <body>
+ <ul id="lst">
+   <li><a href="#">佳能</a><span>(30440)</span></li>
+   <li><a href="#">索尼</a><span>(27220)</span></li>
+   <li><a href="#">三星</a><span>(20608)</span></li>
+   <li><a href="#">尼康</a><span>(17821)</span></li>
+   <li><a href="#">松下</a><span>(12289)</span></li>
+   <li><a href="#">卡西欧</a><span>(8242)</span></li>
+   <li><a href="#">富士</a><span>(14894)</span></li>
+   <li><a href="#">柯达</a><span>(95230)</span></li>
+   <li><a href="#">宾得</a><span>(43552)</span></li>
+   <li><a href="#">理光</a><span>(35948)</span></li>
+   <li><a href="#">奥林巴斯</a><span>(15896)</span></li>
+   <li><a href="#">明基</a><span>(34422)</span></li>
+   <li><a href="#">爱国者</a><span>(10056)</span></li>
+   <li><a href="#">其它品牌相机</a><span>(10056)</span></li>
+</ul>
+<div class="sonBtn">
+   <a href="hello.html" class="btn">显示品牌</a>
+</div>
+ </body>
+</html>
+	

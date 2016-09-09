@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表格的展开和收缩</title>
+	<script src="jquery.js"></script>
+	<script>
+		$(function(){
+			$(".zu").click(function(){
+				$(this).nextUntil(".zu").toggle();
+			})
+		  $("span").click(function(){
+		    var td=$(this);
+			var tex=td.text();
+			var input=$("<input type='text' value='"+tex+"'/>");
+			td.html(input);
+			input.click(function(){return false});
+			input.trigger("focus");
+
+		  }) 
+		  //判断删除
+       $("table").on("click",".dle",function(){
+	    if(confirm("是否删除")){
+		  $(this).parents("tr").remove();
+		}else{ return false}	    
+		  });
+		  //添加
+      $(".btn").click(function(){
+	   $("table")
+	   .append("<tr><td><input type='radio' name='sha' /></td><td><span>victor</span></td><td>男</td><td>新加坡</td><td class='dle'>删除</td></tr>")
+	  })
+		});
+	</script>
+	<style type="text/css">
+	td,th{width:100px;height:30px;line-height:30px;text-align:center;}
+		table,tr,td{ border:1px solid; border-collapse:collapse;}
+		 .zu{ background:orange;}
+		th{ background:blue;color:#FF9;}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th></th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>爱好</th>
+			<th>爱好</th>
+		</tr>
+		<tr class="zu even">
+			<td>第一组</td>
+			<td colspan="4"></td>
+		</tr>
+		<tr style="display:none">
+			<td><input type="radio" name="sha" /></td>
+			<td><span>victor</span></td>
+			<td>男</td>
+			<td>新加坡</td>
+			<td class="dle">删除</td>
+		</tr>
+		<tr style="display:none">
+			<td><input type="radio" name="sha" /></td>
+			<td>Andy</td>
+			<td>男</td>
+			<td>北京</td>
+			<td class="dle">删除</td>
+		</tr>
+		<tr class="zu">
+			<td>第二组</td>
+			<td colspan="4"></td>
+		</tr>
+		<tr style="display:none" >
+			<td><input type="radio" name="sha" /></td>
+			<td>black</td>
+			<td>女</td>
+			<td>上海</td>
+			<td class="dle">删除</td>
+		</tr>
+		<tr style="display:none" class="show">
+			<td><input type="radio" name="sha" /></td>
+			<td>victor</td>
+			<td>男</td>
+			<td><span>新加坡</span></td>
+			<td class="dle">删除</td>
+		</tr>
+		<tr class="zu">
+			<td>第三组</td>
+			<td colspan="4"></td>
+		</tr>
+		<tr style="display:none">
+		    <td><input type="radio" name="sha" /></td>
+			<td>Andy</td>
+			<td>男</td>
+			<td>北京</td>
+			<td class="dle">删除</td>
+		</tr>
+		<tr style="display:none">
+			<td><input type="radio" name="sha" /></td>
+			<td>black</td>
+			<td>女</td>
+			<td>上海</td>
+			<td class="dle">删除</td>
+		</tr>
+	</table><input type="submit" class="btn">
+  </body>
+</html>

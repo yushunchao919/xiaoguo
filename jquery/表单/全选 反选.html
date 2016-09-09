@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gb2312" />
+<title>文本框高度</title>
+<style type="text/css">   
+
+
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+ $(function(){
+    //全选
+     $("#aa").click(function(){
+	  $('[name=nse]:checkbox').prop('checked',true);
+	});
+	//全不选
+    $("#ss").click(function(){
+	$('[name=nse]:checkbox').prop('checked',false);
+	});
+	//反选
+	$("#dd").click(function(){
+	  $('[name=nse]:checkbox').each(function(){
+	     this.checked=!this.checked;
+	  });
+	});
+	//提交 提示
+	$("#btn").click(function(){
+	var str="你选中的是：\r\n";//  \r回车  \n创建新的一行
+	 $('[name=nse]:checkbox:checked').each(function(){
+	     str+=$(this).val()+"\r\n";
+	  });
+	  alert(str);
+	});
+
+})
+</script>
+</head>
+<body>
+   <form action="#" method="post">
+   你喜欢什么？
+    <br/>
+	<br/>
+      <input type="checkbox" name="nse" value="足球" />足球
+      <input type="checkbox" name="nse" value="蓝球" />蓝球
+      <input type="checkbox" name="nse" value="排球" />排球
+      <input type="checkbox" name="nse" value="乒乓球" />乒乓球
+      <input type="checkbox" name="nse" value="羽毛球" />羽毛球
+      <input type="checkbox" name="nse" value="铅球" />铅球
+      <input type="button" id="btn" value="提交" />
+      <input type="button" id="aa" value="全选" />
+      <input type="button" id="ss" value="不全选" />
+      <input type="button" id="dd" value="反选" />
+   </form>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>留言板</title>
+		<style type="text/css">
+			.fl{float: left;}
+	        .fr{float: right;}
+			.clearfix:after{content: "\200B";display: block;height: 0;clear: both;}
+	        .clearfix{*zoom: 1;}
+			.b{text-indent: 2em;margin: 10px 0;display: block;}
+			.hr{height:0px;border: 1px solid #eee;}
+			.box{width: 550px;margin: 0 auto;}
+			.tet{margin:0;}
+			.time{font-size: 14px;color:#9B9B9B;}
+		</style>
+		<script type="text/javascript" src="jquery.js"> </script>
+		  <script src="template.js"></script>
+	</head>
+	<body>
+		  <div style="width: 600px;margin: 0 auto;border: 1px solid #eee;">
+		  	   <b class="b">留言（123）</b>		  	   
+		  	  <div class="clearfix box">
+		  	   	<hr class="hr" />
+		  	   	<img src="50.jpg" class="fl" />
+		  	   	<div class="fl " style="width: 480px;margin-left: 20px;">
+		  	   	<div>
+		  	   		 <p class="tet">
+		  	   		 	<span>陌然浅笑</span>
+		  	   		 	<img src="2.png" />		  	   		 	  	   		    
+		  	   		 </p>	
+		  	   		 <script id="art_title" type="text/html">
+		  	     		 {{each data as value i}}
+			  	   		  <p style="height: 100px;">{{value.name}}</p>
+		  	   		    {{/each}}	  
+		  	   		 </script>
+		  	   		 <p class="time">2016-08-16 07:03</p>
+		  	   	</div>
+		  	   		 <img src="1.gif"  />
+		  	   		 <form action="" method="post" style="margin-bottom: 15px;">
+			  	   		 <textarea  rows="5" cols="20" id="rea"></textarea><br  />
+			  	   		 <input type="button" id="btn" value="提交" />
+			  	   	</form>         
+		  	   	</div>		 
+		  	  </div>
+		  	  
+		  </div>
+		  
+		  <script type="text/javascript">
+		  	$(function(){
+		  		$("#btn").click(function(){
+		  
+		  		$(".tet").append('<p style="height: 100px;">'+$('textarea').val()+'</p>');
+		  			$.ajax({
+		  				type:'POST',
+		  				url:'index.php',
+		  				data:{text:$('textarea').val()},
+		  				dataType:'json',
+		  			
+		  			})
+		  		});
+		  		$.ajax({
+		  			type:'POST',
+		  				url:'ajax.php',
+		  				dataType:'json',	
+		  				success:function(data){
+		  					var html=template('art_title',data);
+			  				$('.tet').append(html);
+			  			}
+		  		})
+		  	});
+		  </script>
+	</body>
+</html>

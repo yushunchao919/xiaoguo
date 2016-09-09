@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>		
+		<ul>
+		</ul>
+		<a href="javascript:;" id="ppt">添加</a>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#ppt").click(function(){
+						$.ajax({		
+						type:"GET",
+						url:"index.php",
+						dataType:'json',
+						success: function(d){
+							$.each( d.data, function(i,n) {
+								$('ul').append("<li>"+n.name+"</li>");
+							});
+						}
+					}) 
+			  });
+			});
+		</script>
+	</body>
+</html>

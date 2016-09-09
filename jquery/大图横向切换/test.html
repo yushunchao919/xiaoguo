@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	#wrap{ width:950px; height:370px; overflow:hidden; position:relative; font-size:12px;}
+	#wrap p{ position:absolute; right:10px; bottom:10px;}
+	#wrap span{ padding:3px 6px; background-color:#fff; border:1px solid #1E71D7; margin-right:3px; cursor:pointer}
+	#wrap span.current{ background-color:#1E71D7; color:#fff;}
+	#banner{ height:370px; position:absolute;}
+	img{ float:left;}
+</style>
+<script src="images/jquery.min.js"></script>
+<script>
+	$(function(){
+		//图片个数
+		imgLength=$("#banner img").length;
+		//图片宽度
+		imgWidth=$("#banner img").width();
+		$("#banner").width(imgLength*imgWidth);
+		//循环输出页码
+		for(i=1;i<=imgLength;i++){
+			$("p").append("<span>"+i+"</span>");
+			}
+		//第一页引用current
+		$("span:first").addClass("current");
+		$("span").mouseover(function(){
+			$(this).addClass("current").siblings("span").removeClass("current");
+			index1=$(this).index();
+			$("#banner")
+			.stop().animate({left:"-"+(imgWidth*index1)},1000);	
+		});
+		//使用trigger模拟用户的鼠标经过操作
+		//隔N秒钟执行一次触发 setInterval(function(){},1000)
+		//触发当前页的下一页
+		//$("span").eq(2).trigger("mouseover");
+		function scrolls(){
+			index=$(".current").index("span");
+			//判断当前页是否是最后一页
+			if(index==imgLength-1){
+				nextindex=0;
+				}else{
+				nextindex=index+1;	
+				}
+			$("span").eq(nextindex).triggerHandler("mouseover");
+			}
+		int=setInterval(scrolls,2000);
+			//setInterval end
+			//鼠标经过大图，停止自动切换
+			$("#wrap").mouseover(function(){
+				clearInterval(int);	
+			}).mouseout(function(){
+				int=setInterval(scrolls,2000);	
+			});
+		});
+</script>
+</head>
+
+<body>
+<div id="wrap">
+	<div id="banner">
+    	<img src="images/7ae45b82251f63e5331eae3dd2dabf6a.jpg" width="950" height="370" />
+        <img src="images/38f64a79350dee184c425e36e418e796.jpg" />
+        <img src="images/b594f84a0122182f6f5165b93d4eb337.jpg" />
+        <img src="images/c8697cb8dfc2ca1299be8485f39018aa.jpg" />
+        <img src="images/cd5fba39ad8b764772be6857317131c8.jpg" />
+    </div>
+    <p></p>
+</div>
+</body>
+</html>

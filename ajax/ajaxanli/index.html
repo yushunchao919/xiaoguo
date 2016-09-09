@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script src="jquery.js"></script>
+    <script src="template.js"></script>
+</head>
+<body>
+	<a href="javascript:;">ajax请求</a>
+	
+	<script id="art_title" type="text/html">
+		<h1>{{status}}</h1>
+		<p>状态：{{info}}</p>
+		<ul>
+			{{each data as value i}}
+			<li>{{value.title}}</li>
+			{{/each}}
+		</ul>
+		<p>{{status}}</p>
+	</script>
+<script>
+    $(function () {
+	$('a').click(function(){
+		$.ajax({
+			type: 'POST',
+			url: 'index.php',
+			dataType:'json',
+			success: function(data){
+				var html = template('art_title', data);
+				$('body').append(html);
+			}
+		});
+	})
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$.get('index.php',function (d) {
+		}, 'json');
+
+	})
+
+</script>
+</body>
+</html>

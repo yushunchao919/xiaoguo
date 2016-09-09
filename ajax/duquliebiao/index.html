@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script src="jquery.js"></script>
+    <script src="template.js"></script>
+</head>
+<body>
+	<script id="art_title" type="text/html">		
+		<ul>
+			{{each data as value i}}
+			<li>{{value.name}}</li>
+			{{/each}}
+		</ul>		
+	</script>
+<script>
+    $(function () {	
+		$.ajax({
+			type: 'GET',
+			url: 'index.php',
+			dataType:'json',
+			success: function(data){
+				var html = template('art_title', data);
+				$('body').append(html);
+			}
+		});
+	})
+</script>
+</body>
+</html>

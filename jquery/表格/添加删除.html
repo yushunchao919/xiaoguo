@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>表格</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+</script>
+</head>
+
+<body>
+ 
+ <div> 
+<table> 
+<tr><td>1111</td><td><input type="button" value="添加下一行" /><input type="button" value="删除下一行" /></td></tr> 
+<tr><td>2222</td><td><input type="button" value="添加下一行" /><input type="button" value="删除下一行" /></td></tr> 
+<tr><td>3333</td><td><input type="button" value="添加下一行" /><input type="button" value="删除下一行" /></td></tr> 
+<tr><td>4444</td><td><input type="button" value="添加下一行" /><input type="button" value="删除下一行" /></td></tr> 
+</table> 
+</div> 
+<script type="text/javascript"> 
+$(document).ready(function () { 
+ModifyClick(); 
+}); 
+function ModifyClick() { 
+$("table tr input[type='button'] ").each(function () { 
+$(this).unbind("click"); 
+$(this).bind("click", function () { 
+if ($(this).val() == "添加下一行") { 
+$(this).parent().parent().after("<tr><td>Add</td><td><input onclick=\"ModifyClick()\" type=button value=\"添加下一行\" /><input onclick=\"ModifyClick()\" type=button value=\"删除下一行\" /></td></tr>"); 
+} 
+if ($(this).val() == "删除下一行") { 
+$(this).parent().parent().next().eq(0).remove(); 
+} 
+}); 
+}); 
+} 
+</script>
+</body>
+</html>

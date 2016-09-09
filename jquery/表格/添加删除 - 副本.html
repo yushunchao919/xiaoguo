@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>表格</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+</script>
+</head>
+
+<body>
+ 
+ <table width="300"> 
+<tr> 
+<td><b>ID</b></td> 
+<td><b>名称</b></td> 
+<td><b>操作</b></td> 
+</tr> 
+<tr> 
+<td><b>1</b></td> 
+<td class="caname"><b>哈哈</b></td> 
+<td class="delete"><b>删除</b></td>
+<td class="add"><b>添加</b></td> 
+</tr> 
+<tr> 
+<td><b>2</b></td> 
+<td class="caname"><b>哈哈</b></td> 
+<td class="delete"><b>删除</b></td> 
+<td class="add"><b>添加</b></td> 
+</tr> 
+<tr> 
+<td><b>3</b></td> 
+<td class="caname"><b>哈哈</b></td> 
+<td class="delete"><b>删除</b></td> 
+<td class="add"><b>添加</b></td> 
+</tr> 
+</table> 
+
+<script>
+
+  $(function() { 
+//获取class为caname的元素 
+$(".caname").click(function() { 
+var td = $(this); 
+var txt = td.text(); 
+var input = $("<input type='text'value='" + txt + "'/>"); 
+td.html(input); 
+input.click(function() { return false; }); 
+input.trigger("focus");  
+input.blur(function() { 
+var newtxt = $(this).val(); 
+if (newtxt != txt) { 
+td.html(newtxt); 
+
+} 
+else 
+{ 
+td.html(newtxt); 
+} 
+}); 
+});
+$(".delete").click(function(){
+ $(this).parent().next().eq(0).remove();
+})
+$(".add").click(function(){
+ $(this).parents("tr").after('<tr> <td><b></b></td><td><b> <td class="delete"><b>删除</b></td><td class="add"><b>添加</b></td></tr>')
+})
+}); 
+</script>
+</body>
+</html>

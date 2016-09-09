@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册</title>
+	</head>
+	<body>
+		  <form action="" method="post">
+		  	
+		  	账号：<input type="text" value="" id="tet" name="tet"/><br  /><br  /><br  /><br  />
+		  	密码：<input type="password" value="" id="pswd" name="pswd"/><br  /><br  /><br  />
+		  	<a href="javascript:;" id="btn">注册</a>
+		  </form>
+		  <script type="text/javascript" src="jquery.js"></script>
+		  <script type="text/javascript">
+		  	$(function(){
+		  		$("#btn").click(function(){
+		  			$.ajax({
+		  				type:'POST',
+		  				url:'index.php',
+		  				data: {tet:$("#tet").val(),pswd:$("#pswd").val()},
+		  				success: function(d){
+		  					alert(d)
+		  				}
+		  			});
+		  		});
+		  	});
+		  </script>
+	</body>
+</html>

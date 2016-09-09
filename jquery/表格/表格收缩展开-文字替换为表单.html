@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+	$(".first").click(function(){
+		$(".a").toggle("fast");
+	});	
+	$(".second").click(function(){
+		$(".b").toggle("fast");
+	});	
+	$(".third").click(function(){
+		$(".c").toggle("fast");
+	});
+	
+});
+$(function() { 
+//获取要替换内容的元素 
+$("span").click(function() { 
+var td = $(this); 
+var txt = td.text(); 
+var input = $("<input type='text'value='" + txt + "'/>"); 
+td.html(input); 
+input.click(function() { return false;}); //防止了事件冒泡
+//获取焦点 
+input.trigger("focus"); 
+//文本框失去焦点后提交内容，重新变为文本 
+input.blur(function() { 
+var newtxt = $(this).val(); 
+//判断文本有没有修改 
+if (newtxt != txt) { 
+td.html(newtxt); 
+
+} 
+else 
+{ 
+td.html(newtxt); 
+} 
+}); 
+}); 
+$(".del").click(function(){
+	if(confirm("是否删除？")){
+		$(this).parent().remove();
+	}else{
+		return false;
+	}
+});
+}); 
+</script>
+<style type="text/css">
+table{width:550px;}
+.head th{width:100px;}
+.head td{width:100px; text-align:center;}
+.bgFFFF99{ background-color:#FF9;}
+
+td{ padding:10px; padding-left:80px;width:170px;}
+</style>
+</head>
+<body>
+<table>
+	<tr class="head">
+		<th>姓 名</th>
+		<th>性 别</th>
+		<th>爱 好</th>
+	</tr>
+	<tr class="first bgFFFF99">
+	<td colspan="4">第一组</td>
+	</tr>
+	<tr class="a">
+		<td>Tom</td>
+		<td>男</td>
+		<td>看书</td>
+		<td class="del">删除</td>
+	</tr>
+	<tr class="a">
+		<td><span>Tom</span></td>
+		<td>男</td>
+		<td>看书</td>
+	</tr>
+	<tr class="second bgFFFF99">
+		<td colspan="3">第二组</td>
+	</tr>
+	<tr class="b">
+		<td>Marry</td>
+		<td>性别</td>
+		<td>唱歌</td>
+	</tr>
+	<tr class="b">
+		<td>Marry</td>
+		<td>性别</td>
+		<td>唱歌</td>
+		<td class="del">删除</td>
+	</tr>
+	<tr class="third bgFFFF99">
+		<td colspan="3">第三组</td>
+	</tr>
+	<tr class="c">
+		<td>William</td>
+		<td>性别</td>
+		<td>打球</td>
+	</tr>
+	<tr class="c">
+		<td>William</td>
+		<td>性别</td>
+		<td>打球</td>
+	</tr>
+</table>
+</body>
+</html>
+

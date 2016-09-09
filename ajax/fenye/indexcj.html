@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script src="jquery.js"></script>
+    <script src="template.js"></script>
+    <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.page.js"></script>
+</head>
+<body>
+	<div>
+		<ul></ul>
+	</div>
+	<script id="art_title" type="text/html">		
+			{{each data as value i}}
+			<li>{{value.name}}</li>
+			{{/each}}
+	</script>
+	
+	<div class="tcdPageCode"></div>
+<script>
+    $(function () {	
+		$.ajax({
+			type: 'GET',
+			url: 'indexcj.php',
+			dataType:'json',
+			success: function(data){
+				var html = template('art_title', data);
+				$('ul').append(html);
+		      $(".tcdPageCode").createPage({
+				        pageCount:data.totlenum,
+				        current:1,
+				        backFn:function(p){
+				             $.ajax({
+									type: 'GET',
+									url: 'indexcj.php',
+									data:{page:p},
+									dataType:'json',
+									success: function(data){
+											var html = template('art_title', data);
+										    $('ul').html('').append(html);										
+									    }										
+									});
+				        }
+				    });
+
+			}
+		});	
+
+
+			
+		
+		})		
+
+</script>
+</body>
+</html>
